@@ -8,7 +8,7 @@
 	cursor: pointer;
 }
 
-.uploadPhoto > div {
+.uploadPhoto>div {
 	display: flex;
 	flex-direction: column;
 	position: absolute;
@@ -19,8 +19,22 @@
 	color: #ffffff;
 }
 
-.uploadPhoto > img {
+.uploadPhoto>img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
+}
+
+.button {
+	width: 150px;
+	height: 30px;
+	background: rgb(147, 231, 97);
+	background: linear-gradient(90deg,
+			rgba(147, 231, 97, 1) 0%,
+			rgba(109, 237, 141, 1) 70%);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
 }

@@ -5,6 +5,7 @@ import SignUp from "./pages/signup/signup";
 import Home from "./pages/home/home";
 import Onboarding from "./pages/onboarding/onboarding";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import db from "./firebase";
 
 const App = () => {
 	return (

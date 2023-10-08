@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import styles from "../signup/signup.module.css";
 import { useNavigate } from "react-router-dom";
 import healthill2 from "../../images/healthill2.svg";
+import { doc, setDoc } from "firebase/firestore";
+import { UserContext } from "../../context/usercontext";
+
 
 const SignUp = () => {
 	const navigate = useNavigate();
@@ -15,6 +18,29 @@ const SignUp = () => {
 
 	const [confirmPassword, setConfirmPassword] = useState("");
 
+	const { setUserData } = useContext(UserContext)
+
+
+
+
+	// const [authUser, setAuthUser] = useState(null);
+
+	const uploadUserData = async (authuser) => {
+		try {
+			const documentRef = doc(db, "Users", authuser.user.email);
+			const newUserData = {
+				name,
+				email
+
+			}
+
+			await setDoc(documentRef, newUserData);
+		}
+		catch (error) {
+			console.log(error.message);
+		}
+	}
+
 	const signup = async (e) => {
 		e.preventDefault();
 		try {
@@ -23,12 +49,16 @@ const SignUp = () => {
 				email,
 				password
 			);
+			// setAuthUser(authuser);
 			console.log(authuser.user.refreshToken);
+
+			setUserData(authuser)
 			localStorage.setItem(
 				"auth-user",
 				JSON.stringify(authuser.user.refreshToken)
 			);
 			navigate("/Onboarding");
+			uploadUserData(authuser);
 		} catch (error) {
 			console.log(error.message);
 		}

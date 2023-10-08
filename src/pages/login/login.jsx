@@ -1,15 +1,39 @@
 import styles from "../login/login.module.css";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../firebase";
-import { useEffect, useState } from "react";
+import { auth, provider, db } from "../../firebase";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import healthill from "../../images/healthill.svg";
 import googleIcon from "../../images/google-icon.svg";
+import { doc, setDoc } from "firebase/firestore";
+import { UserContext } from "../../context/usercontext";
 
 const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { setGoogleUserData } = useContext(UserContext)
+	const uploadUserData = async (authGoogleUser) => {
+		try {
+
+			const documentRef = doc(db, "Users", authGoogleUser.user.email);
+			const newUserData = {
+				email,
+				name: authGoogleUser.user.displayName,
+				profile: authGoogleUser.user.photoURL
+
+			}
+			await setDoc(documentRef, newUserData);
+			console.log("data uploaded");
+
+
+
+		}
+		catch (error) {
+			console.error(error.message);
+		}
+	}
+
 	const handlelogin = async (e) => {
 		e.preventDefault();
 		try {
@@ -19,7 +43,7 @@ const Login = () => {
 				password
 			);
 			console.log("succesfully logged in ");
-			console.log(authuser);
+
 			localStorage.setItem(
 				"auth-user",
 				JSON.stringify(authuser.user.refreshToken)
@@ -32,11 +56,14 @@ const Login = () => {
 	const handleGoogleLogin = async () => {
 		try {
 			const authGoogleUser = await signInWithPopup(auth, provider);
+			setGoogleUserData(authGoogleUser);
 			localStorage.setItem(
 				"auth-google-user",
 				JSON.stringify(authGoogleUser.user.refreshToken)
 			);
 			navigate("/Home");
+			uploadUserData(authGoogleUser);
+			console.log(authGoogleUser);
 		} catch (error) {
 			console.log(error.message);
 		}
@@ -138,5 +165,6 @@ const Login = () => {
 			</section>
 		</>
 	);
-};
+}
+
 export default Login;
