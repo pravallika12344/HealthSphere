@@ -14,7 +14,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { setGoogleUserData } = useContext(UserContext);
+	const { setUserData } = useContext(UserContext);
 	const uploadUserData = async (authGoogleUser) => {
 		try {
 			const documentRef = doc(
@@ -71,7 +71,7 @@ const Login = () => {
 	const handleGoogleLogin = async () => {
 		try {
 			const authGoogleUser = await signInWithPopup(auth, provider);
-			setGoogleUserData(authGoogleUser);
+			setUserData(authGoogleUser);
 			localStorage.setItem(
 				"auth-google-user",
 				JSON.stringify(authGoogleUser.user.refreshToken)

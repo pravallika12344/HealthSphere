@@ -18,9 +18,9 @@ const Onboarding = () => {
 	const [State, setState] = useState("");
 	const [City, setCity] = useState("");
 	const [Gender, setGender] = useState("");
-	const { userData, googleUserData } = useContext(UserContext);
+	const { userData } = useContext(UserContext);
 	const navigate = useNavigate();
-	const userEmail = userData?.user?.email || googleUserData?.user?.email;
+	const userEmail = userData?.user?.email;
 	const handleImageUpload = (event) => {
 		const uploadedImage = event.target.files[0];
 		setProfileImage(URL.createObjectURL(uploadedImage));

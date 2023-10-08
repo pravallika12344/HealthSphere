@@ -1,115 +1,113 @@
 .navbar {
-	height: 80px;
-	width: 100%;
-	background-color: white;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	position: relative;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
 
 .headingBox {
-	width: 200px;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
 }
 
 .heading {
-	color: rgb(69, 153, 156);
+    color: rgb(69, 153, 156);
+    font-size: 30px;
 }
 
 .profileBox {
-	width: 120px;
-	height: 100%;
-	display: flex;
-	margin-right: 20px;
+    width: 120px;
+    height: 100%;
+    display: flex;
+    margin-right: 20px;
 }
 
 .photo {
-	height: 100%;
-	width: 70%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dropdown {
-	height: 100%;
-	width: 30%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dropdown img {
-	width: 20px;
+    width: 20px;
 }
 
 .dropdownBox {
-	width: 150px;
-	height: 100px;
-	background-color: white;
-	position: absolute;
-	bottom: -110px;
-	right: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 150px;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    bottom: -110px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .profileBtn {
-	width: 90%;
-	height: 30px;
-	background: rgb(147, 231, 97);
-	background: linear-gradient(
-		90deg,
-		rgba(147, 231, 97, 1) 0%,
-		rgba(109, 237, 141, 1) 70%
-	);
-	border: none;
-	border-radius: 5px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
-	color: white;
-	font-size: 15px;
-	cursor: pointer;
+    width: 90%;
+    height: 35px;
+    background: rgb(147, 231, 97);
+    background: linear-gradient(90deg,
+            rgba(147, 231, 97, 1) 0%,
+            rgba(109, 237, 141, 1) 70%);
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .signOutBtn {
-	width: 90%;
-	height: 30px;
-	background: rgb(147, 231, 97);
-	background: linear-gradient(
-		90deg,
-		rgba(147, 231, 97, 1) 0%,
-		rgba(109, 237, 141, 1) 70%
-	);
-	border: none;
-	border-radius: 5px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
-	color: white;
-	font-size: 15px;
-	cursor: pointer;
+    width: 90%;
+    height: 35px;
+    background: rgb(147, 231, 97);
+    background: linear-gradient(90deg,
+            rgba(147, 231, 97, 1) 0%,
+            rgba(109, 237, 141, 1) 70%);
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .imageWrapper {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background-color: black;
-	overflow: hidden;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: black;
+    overflow: hidden;
 }
 
 .imageWrapper img {
-	width: 100%;
+    width: 100%;
 }
