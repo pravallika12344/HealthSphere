@@ -5,26 +5,34 @@ import SignUp from "./pages/signup/signup";
 import Home from "./pages/home/home";
 import Onboarding from "./pages/onboarding/onboarding";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import db from "./firebase";
+import { UserContextProvider } from "./context/usercontext";
 
 const App = () => {
 	return (
 		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Main />}></Route>
-					<Route path="/Login" element={<Login />}></Route>
-					<Route
-						path="/SignUp"
-						element={<SignUp />}
-					></Route>
-					<Route path="/Home" element={<Home />}></Route>
-					<Route
-						path="/Onboarding"
-						element={<Onboarding />}
-					></Route>
-				</Routes>
-			</BrowserRouter>
+			<UserContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Main />}></Route>
+						<Route
+							path="/Login"
+							element={<Login />}
+						></Route>
+						<Route
+							path="/SignUp"
+							element={<SignUp />}
+						></Route>
+						<Route
+							path="/Home"
+							element={<Home />}
+						></Route>
+						<Route
+							path="/Onboarding"
+							element={<Onboarding />}
+						></Route>
+					</Routes>
+				</BrowserRouter>
+			</UserContextProvider>
 		</>
 	);
 };

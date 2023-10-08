@@ -12,27 +12,25 @@ const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { setGoogleUserData } = useContext(UserContext)
+	const { setGoogleUserData } = useContext(UserContext);
 	const uploadUserData = async (authGoogleUser) => {
 		try {
-
-			const documentRef = doc(db, "Users", authGoogleUser.user.email);
+			const documentRef = doc(
+				db,
+				"Users",
+				authGoogleUser.user.email
+			);
 			const newUserData = {
 				email,
 				name: authGoogleUser.user.displayName,
-				profile: authGoogleUser.user.photoURL
-
-			}
+				profile: authGoogleUser.user.photoURL,
+			};
 			await setDoc(documentRef, newUserData);
 			console.log("data uploaded");
-
-
-
-		}
-		catch (error) {
+		} catch (error) {
 			console.error(error.message);
 		}
-	}
+	};
 
 	const handlelogin = async (e) => {
 		e.preventDefault();
@@ -61,7 +59,7 @@ const Login = () => {
 				"auth-google-user",
 				JSON.stringify(authGoogleUser.user.refreshToken)
 			);
-			navigate("/Home");
+			navigate("/Onboarding");
 			uploadUserData(authGoogleUser);
 			console.log(authGoogleUser);
 		} catch (error) {
@@ -165,6 +163,6 @@ const Login = () => {
 			</section>
 		</>
 	);
-}
+};
 
 export default Login;
