@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import healthill2 from "../../images/healthill2.svg";
 import { doc, setDoc } from "firebase/firestore";
 import { UserContext } from "../../context/usercontext";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const SignUp = () => {
@@ -44,38 +47,41 @@ const SignUp = () => {
 	const signup = async (e) => {
 		e.preventDefault();
 		try {
-			const authuser = await createUserWithEmailAndPassword(
-				auth,
-				email,
-				password
-			);
-			// setAuthUser(authuser);
-			console.log(authuser.user.refreshToken);
 
-			setUserData(authuser)
-			localStorage.setItem(
-				"auth-user",
-				JSON.stringify(authuser.user.refreshToken)
-			);
-			navigate("/Onboarding");
-			uploadUserData(authuser);
-		} catch (error) {
-			console.log(error.message);
+			if (password === confirmPassword) {
+
+				const authuser = await createUserWithEmailAndPassword(
+					auth,
+					email,
+					password
+
+				);
+				// setAuthUser(authuser);
+				console.log(authuser.user.refreshToken);
+
+				setUserData(authuser)
+				localStorage.setItem(
+					"auth-user",
+					JSON.stringify(authuser.user.refreshToken)
+				);
+				navigate("/Onboarding");
+				uploadUserData(authuser);
+				toast.success("Succesfully Created")
+
+			}
+			else {
+				toast.warning("Passwords do not match")
+			}
+
+
+
+		}
+		catch (error) {
+			toast.error(`${error.message}`)
+
 		}
 	};
 
-	// const handleGoogleSignup = async () => {
-	//     try {
-	//         const authGoogleUser = await signInWithPopup(auth, provider);
-	//         console.log(authGoogleUser);
-	//         console.log("succesfully logged in ");
-	//         localStorage.setItem("auth-google-user", JSON.stringify(authGoogleUser.user.refreshToken))
-	//         navigate("/Login");
-	//     }
-	//     catch (error) {
-	//         console.log(error.message);
-	//     }
-	// }
 
 	return (
 		<>

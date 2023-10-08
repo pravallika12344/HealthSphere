@@ -1,0 +1,74 @@
+.navbar {
+    height: 80px;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.headingBox {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    color: rgb(69, 153, 156);
+}
+
+.profileBox {
+    width: 120px;
+    height: 100%;
+    display: flex;
+    margin-right: 20px;
+
+}
+
+.photo {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.dropdown {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown img {
+    width: 30px;
+}
+
+.dropdownBox {
+    position: absolute;
+    bottom: 60;
+    right: 0;
+}
+
+.profileBtn {}
+
+.signOutBtn {}
+
+.imageWrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    overflow: hidden;
+}
+
+.imageWrapper img {
+
+    width: 100%;
+
+}

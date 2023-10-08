@@ -6,6 +6,8 @@ import { storage, db } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../context/usercontext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Onboarding = () => {
 	const [ProfileImage, setProfileImage] = useState(null);
@@ -58,6 +60,20 @@ const Onboarding = () => {
 			console.error(error.message);
 		}
 	};
+
+	const handleButtonClick = () => {
+		if (Phone !== "" && State !== "" && Age !== "" && City !== "" && Gender !== "") {
+			navigate('/Home');
+			uploadOnboardingData(onboardingData);
+
+		}
+		else {
+			toast.warning("Don't leave fields empty")
+		}
+
+
+	}
+
 
 	return (
 		<>
@@ -158,12 +174,9 @@ const Onboarding = () => {
 					<div>
 						<button
 							className={styles.button}
-							onClick={() => {
-								uploadOnboardingData(
-									onboardingData
-								);
-								navigate("/Home");
-							}}
+							onClick={
+								handleButtonClick
+							}
 						>
 							Continue
 						</button>
