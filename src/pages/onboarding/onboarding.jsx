@@ -5,6 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../context/usercontext";
+import { useNavigate } from "react-router-dom";
 
 const Onboarding = () => {
 	const [ProfileImage, setProfileImage] = useState(null);
@@ -16,16 +17,8 @@ const Onboarding = () => {
 	const [City, setCity] = useState("");
 	const [Gender, setGender] = useState("");
 	const { userData, googleUserData } = useContext(UserContext);
-	const useremail = userData;
-	if (userData || googleUserData) {
-		console.log(userData);
-		console.log(googleUserData);
-	} else {
-		console.log("nodata");
-		console.log(userData);
-		console.log(googleUserData);
-	}
-
+	const navigate = useNavigate();
+	const userEmail = userData?.user?.email || googleUserData?.user?.email;
 	const handleImageUpload = (event) => {
 		const uploadedImage = event.target.files[0];
 		setProfileImage(URL.createObjectURL(uploadedImage));
@@ -41,7 +34,6 @@ const Onboarding = () => {
 				await uploadBytes(imageReference, UploadProfileImage);
 				const imageUrl = await getDownloadURL(imageReference);
 				setimgUrl(imageUrl);
-				console.log(imageUrl);
 			} catch (error) {
 				console.error(error.message);
 			}
@@ -60,7 +52,8 @@ const Onboarding = () => {
 
 	const uploadOnboardingData = async (onboardingData) => {
 		try {
-			const documentRef = doc(db, "Users");
+			const documentRef = doc(db, "Users", userEmail);
+			await updateDoc(documentRef, onboardingData, { merge: true });
 		} catch (error) {
 			console.error(error.message);
 		}
@@ -169,6 +162,7 @@ const Onboarding = () => {
 								uploadOnboardingData(
 									onboardingData
 								);
+								navigate("/Home");
 							}}
 						>
 							Continue

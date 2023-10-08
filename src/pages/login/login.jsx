@@ -21,7 +21,7 @@ const Login = () => {
 				authGoogleUser.user.email
 			);
 			const newUserData = {
-				email,
+				email: authGoogleUser.user.email,
 				name: authGoogleUser.user.displayName,
 				profile: authGoogleUser.user.photoURL,
 			};
