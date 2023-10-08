@@ -7,6 +7,8 @@ import healthill from "../../images/healthill.svg";
 import googleIcon from "../../images/google-icon.svg";
 import { doc, setDoc } from "firebase/firestore";
 import { UserContext } from "../../context/usercontext";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -47,8 +49,10 @@ const Login = () => {
 				JSON.stringify(authuser.user.refreshToken)
 			);
 			navigate("/Home");
+			toast.success("Login Successful");
 		} catch (error) {
 			console.log(error.message);
+			toast.error(`${error.message}`);
 		}
 	};
 	const handleGoogleLogin = async () => {

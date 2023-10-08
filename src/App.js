@@ -6,12 +6,26 @@ import Home from "./pages/home/home";
 import Onboarding from "./pages/onboarding/onboarding";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./context/usercontext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
 	return (
 		<>
 			<UserContextProvider>
 				<BrowserRouter>
+					<ToastContainer
+						position="top-center"
+						autoClose={5000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+						theme="light"
+					/>
 					<Routes>
 						<Route path="/" element={<Main />}></Route>
 						<Route
