@@ -36,23 +36,36 @@ const Login = () => {
 
 	const handlelogin = async (e) => {
 		e.preventDefault();
-		try {
-			const authuser = await signInWithEmailAndPassword(
-				auth,
-				email,
-				password
-			);
-			console.log("succesfully logged in ");
+		if (email && password !== "") {
+			try {
+				const authuser = await signInWithEmailAndPassword(
+					auth,
+					email,
+					password
+				);
+				console.log("succesfully logged in ");
 
-			localStorage.setItem(
-				"auth-user",
-				JSON.stringify(authuser.user.refreshToken)
-			);
-			navigate("/Home");
-			toast.success("Login Successful");
-		} catch (error) {
-			console.log(error.message);
-			toast.error(`${error.message}`);
+				localStorage.setItem(
+					"auth-user",
+					JSON.stringify(authuser.user.refreshToken)
+				);
+				navigate("/Home");
+				toast.success("Login Successful");
+			} catch (error) {
+				if (error.code === "auth/wrong-password") {
+					toast.error("Incorrect Password");
+				}
+				if (error.code === "auth/user-not-found") {
+					toast.error("User not found");
+				}
+			}
+		} else {
+			if (email === "") {
+				toast.warning("Provide email id");
+			}
+			if (password === "") {
+				toast.warning("Provide password");
+			}
 		}
 	};
 	const handleGoogleLogin = async () => {
