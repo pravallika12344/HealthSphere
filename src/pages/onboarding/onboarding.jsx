@@ -21,6 +21,7 @@ const Onboarding = () => {
 	const { userData } = useContext(UserContext);
 	const navigate = useNavigate();
 	const userEmail = userData?.user?.email;
+	console.log(userEmail);
 	const handleImageUpload = (event) => {
 		const uploadedImage = event.target.files[0];
 		setProfileImage(URL.createObjectURL(uploadedImage));
@@ -62,71 +63,84 @@ const Onboarding = () => {
 	};
 
 	const handleButtonClick = () => {
-		if (Phone !== "" && State !== "" && Age !== "" && City !== "" && Gender !== "") {
-			navigate('/Home');
+		if (
+			Phone !== "" &&
+			State !== "" &&
+			Age !== "" &&
+			City !== "" &&
+			Gender !== ""
+		) {
+			navigate("/Home");
 			uploadOnboardingData(onboardingData);
-
+		} else {
+			toast.warning("Don't leave fields empty");
 		}
-		else {
-			toast.warning("Don't leave fields empty")
-		}
-
-
-	}
-
+	};
 
 	return (
 		<>
-			<section>
-				<div>
-					<p>Upload your photo</p>
-					<div>
-						<label
-							htmlFor="upload"
-							className={styles.uploadPhoto}
-						>
-							{ProfileImage ? (
-								<img
-									src={ProfileImage}
-									alt="img"
-								/>
-							) : (
-								<>
+			<section className={styles.section}>
+				<div className={styles.container}>
+					<div className={styles.headingContainer}>
+						<h1 className={styles.heading}>
+							Tell ue more about you
+						</h1>
+					</div>
+					<div className={styles.profileContainer}>
+						<p className={styles.uploadText}>
+							Upload your photo
+						</p>
+						<div className={styles.imgContainer}>
+							<label
+								htmlFor="upload"
+								className={styles.uploadPhoto}
+							>
+								{ProfileImage ? (
 									<img
-										src={defaulticon}
+										src={ProfileImage}
 										alt="img"
 									/>
-									<div>
-										<span
-											style={{
-												fontSize: 12,
-												color: "rgb(69, 153, 156)",
-											}}
-										>
-											Upload
-										</span>
-										<span
-											style={{
-												fontSize: 12,
-												color: "rgb(69, 153, 156)",
-											}}
-										>
-											+
-										</span>
-									</div>
-								</>
-							)}
-						</label>
-						<input
-							type="file"
-							id="upload"
-							accept="image/*"
-							onChange={handleImageUpload}
-							style={{ display: "none" }}
-							required
-						/>
+								) : (
+									<>
+										<img
+											src={
+												defaulticon
+											}
+											alt="img"
+										/>
+										<div>
+											<span
+												style={{
+													fontSize: 12,
+													color: "rgb(69, 153, 156)",
+												}}
+											>
+												Upload
+											</span>
+											<span
+												style={{
+													fontSize: 12,
+													color: "rgb(69, 153, 156)",
+												}}
+											>
+												+
+											</span>
+										</div>
+									</>
+								)}
+							</label>
+							<input
+								type="file"
+								id="upload"
+								accept="image/*"
+								onChange={handleImageUpload}
+								style={{ display: "none" }}
+								required
+							/>
+						</div>
 					</div>
-					<div>
+
+					<div className={styles.InputsContainer}>
 						<input
 							type="phone"
 							placeholder="Enter your Mobile Number"
@@ -160,23 +174,23 @@ const Onboarding = () => {
 							}}
 						/>
 						<select
+							className={styles.dropdown}
 							name="Gender"
 							value={Gender}
 							onChange={(e) => {
 								setGender(e.target.value);
 							}}
 						>
+							<option value="none">Gender</option>
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
 							<option value="Others">Others</option>
 						</select>
 					</div>
-					<div>
+					<div className={styles.btnCont}>
 						<button
 							className={styles.button}
-							onClick={
-								handleButtonClick
-							}
+							onClick={handleButtonClick}
 						>
 							Continue
 						</button>

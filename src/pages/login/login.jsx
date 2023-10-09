@@ -43,6 +43,7 @@ const Login = () => {
 					email,
 					password
 				);
+				setUserData(authuser);
 				console.log("succesfully logged in ");
 
 				localStorage.setItem(
