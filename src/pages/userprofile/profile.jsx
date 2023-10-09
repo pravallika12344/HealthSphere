@@ -5,11 +5,23 @@ import { UserContext } from "../../context/usercontext";
 import styles from "./profile.module.css";
 
 const Profile = () => {
+
 	const { userData } = useContext(UserContext);
 	const userEmail = userData?.user?.email;
 	const [userDetails, setUserDetails] = useState(null);
 	const [editName, setEditName] = useState(false);
 	const [newName, setNewName] = useState("");
+	const [editMail, setEditMail] = useState(false);
+	const [newMail, setNewMail] = useState("");
+	const [editPhone, setEditPhone] = useState(false);
+	const [newPhone, setNewPhone] = useState("");
+	const [editState, setEditState] = useState(false);
+	const [newState, setNewState] = useState("");
+	const [editCity, setEditCity] = useState(false);
+	const [newCity, setNewCity] = useState("");
+	const [editAge, setEditAge] = useState(false);
+	const [newAge, setNewAge] = useState("");
+
 	useEffect(() => {
 		try {
 			const getUserData = async () => {
@@ -22,21 +34,7 @@ const Profile = () => {
 			};
 			getUserData();
 		} catch (error) {
-			if (
-				error instanceof FirestoreError &&
-				error.code === "unavailable"
-			) {
-				// Handle the offline scenario here, e.g., display a message to the user
-				console.log(
-					"Firestore is currently unavailable. Please check your internet connection."
-				);
-			} else {
-				// Handle other errors here
-				console.error(
-					"Error fetching user data:",
-					error.message
-				);
-			}
+			console.error(error.message)
 		}
 	}, []);
 
@@ -86,47 +84,102 @@ const Profile = () => {
 							<input
 								value={userDetails?.email}
 								name="Email"
-								readOnly
+								readOnly={!editMail}
+								onChange={
+									(e) =>
+										setNewMail(e.target.value)
+								}
 								type="Email"
 							/>
+							<button
+								onClick={() => {
+									setEditName(!editMail)
+								}}>
+								edit
+							</button>
 						</div>
 						<div>
 							<label>Phone:</label>
 							<input
 								value={userDetails?.phone}
 								name="Phone"
-								readOnly
+								readOnly={!editPhone}
+								onChange={
+									(e) =>
+										setNewPhone(e.target.value)
+								}
 								type="phone"
 							/>
+							<button
+								onClick={() => {
+									setEditPhone(!editPhone)
+								}}>
+								edit
+							</button>
 						</div>
 						<div>
 							<label>Age:</label>
 							<input
 								value={userDetails?.age}
-								readOnly
+								readOnly={!editAge}
+								onChange={
+									(e) =>
+										setNewAge(e.target.value)
+								}
 								name="Age"
 								type="number"
 							/>
+							<button onClick={
+								() => {
+									setEditAge(!editAge)
+								}
+							}>
+								edit
+
+							</button>
 						</div>
 
 						<div>
 							<label>City:</label>
 							<input
 								value={userDetails?.city}
-								readOnly
+								readOnly={!editCity}
+								onChange={
+									(e) =>
+										setEditCity(!editCity)
+								}
 								name="City"
 								type="text"
 							/>
+							<button onClick={
+								() => {
+									setEditCity(!editCity)
+								}
+							}>
+								edit
+
+							</button>
 						</div>
 
 						<div>
 							<label>State:</label>
 							<input
 								value={userDetails?.state}
-								readOnly
+								readOnly={!editState}
+								onChange={
+									(e) =>
+										setEditState(!editState)
+								}
 								name="State"
 								type="text"
 							/>
+							<button onClick={
+								() => {
+									setEditState(!editState)
+								}
+							}>
+
+							</button>
 						</div>
 					</div>
 				</div>
