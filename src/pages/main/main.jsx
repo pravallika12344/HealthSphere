@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 const Main = () => {
 	const navigate = useNavigate();
 	const checkToken = () => {
-		const userToken =
-			JSON.parse(localStorage.getItem("auth-user")) || "";
-		const googleAuthToken =
-			JSON.parse(localStorage.getItem("auth-google-user")) || "";
+		const userToken = JSON.parse(localStorage.getItem("auth-user")) || "";
+		const googleAuthToken = JSON.parse(localStorage.getItem("auth-google-user")) || "";
 		if (userToken === "" && googleAuthToken === "") {
 			navigate("/Login");
 		} else {
@@ -19,15 +17,11 @@ const Main = () => {
 			<section className={styles.container}>
 				<div className={styles.contentContainer}>
 					<h1 className={styles.heading}>
-						Welcome To{" "}
-						<span className={styles.healthSphere}>
-							Health Sphere
-						</span>
+						Welcome To <span className={styles.healthSphere}>Health Sphere</span>
 					</h1>
 					<button
 						className={styles.consultBtn}
-						onClick={checkToken}
-					>
+						onClick={checkToken}>
 						Consult Our Specialists
 					</button>
 				</div>

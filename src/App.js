@@ -4,7 +4,7 @@ import Login from "./pages/login/login";
 import SignUp from "./pages/signup/signup";
 import Home from "./pages/home/home";
 import Onboarding from "./pages/onboarding/onboarding";
-import Profile from "./pages/userprofile/profile"
+import Profile from "./pages/userprofile/profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./context/usercontext";
 import { ToastContainer } from "react-toastify";
@@ -28,27 +28,24 @@ const App = () => {
 						theme="light"
 					/>
 					<Routes>
-						<Route path="/" element={<Main />}></Route>
+						<Route
+							path="/"
+							element={<Main />}></Route>
 						<Route
 							path="/Login"
-							element={<Login />}
-						></Route>
+							element={<Login />}></Route>
 						<Route
 							path="/SignUp"
-							element={<SignUp />}
-						></Route>
+							element={<SignUp />}></Route>
 						<Route
 							path="/Home"
-							element={<Home />}
-						></Route>
+							element={<Home />}></Route>
 						<Route
 							path="/Onboarding"
-							element={<Onboarding />}
-						></Route>
+							element={<Onboarding />}></Route>
 						<Route
 							path="/Profile"
-							element={<Profile />}
-						></Route>
+							element={<Profile />}></Route>
 					</Routes>
 				</BrowserRouter>
 			</UserContextProvider>

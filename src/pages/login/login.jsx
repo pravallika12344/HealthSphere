@@ -17,11 +17,7 @@ const Login = () => {
 	const { setUserData } = useContext(UserContext);
 	const uploadUserData = async (authGoogleUser) => {
 		try {
-			const documentRef = doc(
-				db,
-				"Users",
-				authGoogleUser.user.email
-			);
+			const documentRef = doc(db, "Users", authGoogleUser.user.email);
 			const newUserData = {
 				email: authGoogleUser.user.email,
 				name: authGoogleUser.user.displayName,
@@ -38,18 +34,11 @@ const Login = () => {
 		e.preventDefault();
 		if (email && password !== "") {
 			try {
-				const authuser = await signInWithEmailAndPassword(
-					auth,
-					email,
-					password
-				);
+				const authuser = await signInWithEmailAndPassword(auth, email, password);
 				setUserData(authuser);
 				console.log("succesfully logged in ");
 
-				localStorage.setItem(
-					"auth-user",
-					JSON.stringify(authuser.user.refreshToken)
-				);
+				localStorage.setItem("auth-user", JSON.stringify(authuser.user.refreshToken));
 				navigate("/Home");
 				toast.success("Login Successful");
 			} catch (error) {
@@ -73,10 +62,7 @@ const Login = () => {
 		try {
 			const authGoogleUser = await signInWithPopup(auth, provider);
 			setUserData(authGoogleUser);
-			localStorage.setItem(
-				"auth-google-user",
-				JSON.stringify(authGoogleUser.user.refreshToken)
-			);
+			localStorage.setItem("auth-google-user", JSON.stringify(authGoogleUser.user.refreshToken));
 			navigate("/Onboarding");
 			uploadUserData(authGoogleUser);
 			console.log(authGoogleUser);
@@ -93,30 +79,24 @@ const Login = () => {
 			<section className={styles.section}>
 				<div className={styles.container}>
 					<div className={styles.leftContainer}>
-						<img src={healthill} alt="healthill" />
+						<img
+							src={healthill}
+							alt="healthill"
+						/>
 					</div>
 					<div className={styles.rightContainer}>
 						<div className={styles.loginForm}>
-							<div
-								className={
-									styles.headingcontainer
-								}
-							>
-								<h1 className={styles.heading}>
-									Sign In
-								</h1>
+							<div className={styles.headingcontainer}>
+								<h1 className={styles.heading}>Sign In</h1>
 							</div>
 							<form
 								onSubmit={handlelogin}
-								className={styles.form}
-							>
+								className={styles.form}>
 								<input
 									value={email}
 									type="text"
 									onChange={(e) => {
-										setEmail(
-											e.target.value
-										);
+										setEmail(e.target.value);
 									}}
 									placeholder="Enter your email"
 								/>
@@ -124,16 +104,13 @@ const Login = () => {
 									value={password}
 									type="password"
 									onChange={(e) => {
-										setPassword(
-											e.target.value
-										);
+										setPassword(e.target.value);
 									}}
 									placeholder="Enter Password"
 								/>
 								<button
 									type="submit"
-									onClick={handlelogin}
-								>
+									onClick={handlelogin}>
 									Sign In
 								</button>
 							</form>
@@ -142,36 +119,19 @@ const Login = () => {
 						<div className={styles.createAccount}>
 							<div className={styles.signin}>
 								<img
-									className={
-										styles.signinImg
-									}
+									className={styles.signinImg}
 									src={googleIcon}
 									alt="googleIcon"
 								/>
-								<button
-									onClick={
-										handleGoogleLogin
-									}
-								>
-									Continue with Google
-								</button>
+								<button onClick={handleGoogleLogin}>Continue with Google</button>
 							</div>
 							<div>
-								<p
-									className={
-										styles.createAccountText
-									}
-								>
-									Create new account
-								</p>
+								<p className={styles.createAccountText}>Create new account</p>
 								<button
-									className={
-										styles.signUpBtn
-									}
+									className={styles.signUpBtn}
 									onClick={() => {
 										navigate("/SignUp");
-									}}
-								>
+									}}>
 									Sign Up
 								</button>
 							</div>

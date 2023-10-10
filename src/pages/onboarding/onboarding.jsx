@@ -31,17 +31,9 @@ const Onboarding = () => {
 		const uploadImageToStorage = async () => {
 			try {
 				if (UploadProfileImage) {
-					const imageReference = ref(
-						storage,
-						`ProfileImages/${UploadProfileImage?.name}`
-					);
-					await uploadBytes(
-						imageReference,
-						UploadProfileImage
-					);
-					const imageUrl = await getDownloadURL(
-						imageReference
-					);
+					const imageReference = ref(storage, `ProfileImages/${UploadProfileImage?.name}`);
+					await uploadBytes(imageReference, UploadProfileImage);
+					const imageUrl = await getDownloadURL(imageReference);
 					setimgUrl(imageUrl);
 				}
 			} catch (error) {
@@ -70,13 +62,7 @@ const Onboarding = () => {
 	};
 
 	const handleButtonClick = () => {
-		if (
-			Phone !== "" &&
-			State !== "" &&
-			Age !== "" &&
-			City !== "" &&
-			Gender !== ""
-		) {
+		if (Phone !== "" && State !== "" && Age !== "" && City !== "" && Gender !== "") {
 			navigate("/Home");
 			uploadOnboardingData(onboardingData);
 		} else {
@@ -89,19 +75,14 @@ const Onboarding = () => {
 			<section className={styles.section}>
 				<div className={styles.container}>
 					<div className={styles.headingContainer}>
-						<h1 className={styles.heading}>
-							Tell ue more about you
-						</h1>
+						<h1 className={styles.heading}>Tell ue more about you</h1>
 					</div>
 					<div className={styles.profileContainer}>
-						<p className={styles.uploadText}>
-							Upload your photo
-						</p>
+						<p className={styles.uploadText}>Upload your photo</p>
 						<div className={styles.imgContainer}>
 							<label
 								htmlFor="upload"
-								className={styles.uploadPhoto}
-							>
+								className={styles.uploadPhoto}>
 								{ProfileImage ? (
 									<img
 										src={ProfileImage}
@@ -110,9 +91,7 @@ const Onboarding = () => {
 								) : (
 									<>
 										<img
-											src={
-												defaulticon
-											}
+											src={defaulticon}
 											alt="img"
 										/>
 										<div>
@@ -120,16 +99,14 @@ const Onboarding = () => {
 												style={{
 													fontSize: 12,
 													color: "rgb(69, 153, 156)",
-												}}
-											>
+												}}>
 												Upload
 											</span>
 											<span
 												style={{
 													fontSize: 12,
 													color: "rgb(69, 153, 156)",
-												}}
-											>
+												}}>
 												+
 											</span>
 										</div>
@@ -186,8 +163,7 @@ const Onboarding = () => {
 							value={Gender}
 							onChange={(e) => {
 								setGender(e.target.value);
-							}}
-						>
+							}}>
 							<option value="none">Gender</option>
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
@@ -197,8 +173,7 @@ const Onboarding = () => {
 					<div className={styles.btnCont}>
 						<button
 							className={styles.button}
-							onClick={handleButtonClick}
-						>
+							onClick={handleButtonClick}>
 							Continue
 						</button>
 					</div>

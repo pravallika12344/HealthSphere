@@ -52,11 +52,8 @@ const Navbar = () => {
 					<div className={styles.photo}>
 						<div className={styles.imageWrapper}>
 							<img
-								src={
-									userDetails?.image
-										? userDetails.image
-										: defaulticon
-								}
+								onClick={() => navigate("/Profile")}
+								src={userDetails?.image ? userDetails.image : defaulticon}
 								alt="Your Photo "
 							/>
 						</div>
@@ -65,9 +62,7 @@ const Navbar = () => {
 						<img
 							src={dropdown}
 							onClick={() => {
-								setIsDropDownOpen(
-									!isDropDownOpen
-								);
+								setIsDropDownOpen(!isDropDownOpen);
 							}}
 							alt="dropdown"
 						/>
@@ -79,14 +74,12 @@ const Navbar = () => {
 							className={styles.profileBtn}
 							onClick={() => {
 								navigate("/Profile");
-							}}
-						>
+							}}>
 							Profile
 						</button>
 						<button
 							className={styles.signOutBtn}
-							onClick={signout}
-						>
+							onClick={signout}>
 							Sign Out
 						</button>
 					</div>

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 export const UserContext = React.createContext();
 export const UserContextProvider = ({ children }) => {
-	const initialUserData =
-		JSON.parse(localStorage.getItem("userDetails")) || null;
+	const initialUserData = JSON.parse(localStorage.getItem("userDetails")) || null;
 
 	const [userData, setUserData] = useState(initialUserData);
 	useEffect(() => {
@@ -14,8 +13,7 @@ export const UserContextProvider = ({ children }) => {
 			value={{
 				userData,
 				setUserData,
-			}}
-		>
+			}}>
 			{children}
 		</UserContext.Provider>
 	);
