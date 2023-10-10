@@ -30,13 +30,20 @@ const Onboarding = () => {
 	useEffect(() => {
 		const uploadImageToStorage = async () => {
 			try {
-				const imageReference = ref(
-					storage,
-					`ProfileImages/${UploadProfileImage?.name}`
-				);
-				await uploadBytes(imageReference, UploadProfileImage);
-				const imageUrl = await getDownloadURL(imageReference);
-				setimgUrl(imageUrl);
+				if (UploadProfileImage) {
+					const imageReference = ref(
+						storage,
+						`ProfileImages/${UploadProfileImage?.name}`
+					);
+					await uploadBytes(
+						imageReference,
+						UploadProfileImage
+					);
+					const imageUrl = await getDownloadURL(
+						imageReference
+					);
+					setimgUrl(imageUrl);
+				}
 			} catch (error) {
 				console.error(error.message);
 			}

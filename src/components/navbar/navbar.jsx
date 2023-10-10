@@ -2,15 +2,17 @@ import defaulticon from "../../images/user.png";
 import dropdown from "../../images/dropdown.png";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { auth } from "../../firebase";
+import { useContext, useState, useEffect } from "react";
+import { auth, db } from "../../firebase";
 import styles from "./navbar.module.css";
 import { UserContext } from "../../context/usercontext";
+import { getDoc, doc } from "firebase/firestore";
 
 const Navbar = () => {
 	const navigate = useNavigate();
 	const { userData } = useContext(UserContext);
 	const userEmail = userData?.user?.email;
+	const [userDetails, setUserDetails] = useState(null);
 
 	console.log(userEmail);
 
@@ -24,6 +26,22 @@ const Navbar = () => {
 		localStorage.removeItem("userDetails");
 	};
 
+	useEffect(() => {
+		try {
+			const getUserData = async () => {
+				const userRef = doc(db, "Users", userEmail);
+				const docSnap = await getDoc(userRef);
+				if (docSnap.exists) {
+					setUserDetails(docSnap.data());
+				}
+				console.log("user details", userDetails);
+			};
+			getUserData();
+		} catch (error) {
+			console.error(error.message);
+		}
+	}, []);
+
 	return (
 		<>
 			<nav className={styles.navbar}>
@@ -34,7 +52,11 @@ const Navbar = () => {
 					<div className={styles.photo}>
 						<div className={styles.imageWrapper}>
 							<img
-								src={defaulticon}
+								src={
+									userDetails?.image
+										? userDetails.image
+										: defaulticon
+								}
 								alt="Your Photo "
 							/>
 						</div>
