@@ -8,13 +8,12 @@ import styles from "./navbar.module.css";
 import { UserContext } from "../../context/usercontext";
 import { getDoc, doc } from "firebase/firestore";
 
-const Navbar = () => {
+const Navbar = (props) => {
 	const navigate = useNavigate();
 	const { userData } = useContext(UserContext);
 	const userEmail = userData?.user?.email;
 	const [userDetails, setUserDetails] = useState(null);
-
-	console.log(userEmail);
+	const currentPage = props.currentPage;
 
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
@@ -48,7 +47,19 @@ const Navbar = () => {
 				<div className={styles.headingBox}>
 					<h1 className={styles.heading}>Health Sphere</h1>
 				</div>
-				<div className={styles.profileBox}>
+				<div
+					style={{ justifyContent: currentPage !== "home" ? "flex-end" : "" }}
+					className={styles.profileBox}>
+					{currentPage === "home" && (
+						<div className={styles.abhaCont}>
+							<button
+								onClick={() => navigate("/GetAbha")}
+								className={styles.abhaBtn}>
+								Get ABHA Number
+							</button>
+						</div>
+					)}
+
 					<div className={styles.photo}>
 						<div className={styles.imageWrapper}>
 							<img

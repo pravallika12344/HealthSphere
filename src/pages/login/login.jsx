@@ -14,6 +14,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const onBoardingDone = localStorage.getItem("onBoardingDone") || "";
 	const { setUserData } = useContext(UserContext);
 	const uploadUserData = async (authGoogleUser) => {
 		try {
@@ -23,7 +24,7 @@ const Login = () => {
 				name: authGoogleUser.user.displayName,
 				profile: authGoogleUser.user.photoURL,
 			};
-			await setDoc(documentRef, newUserData);
+			await setDoc(documentRef, newUserData, { merge: true });
 			console.log("data uploaded");
 		} catch (error) {
 			console.error(error.message);
@@ -63,7 +64,13 @@ const Login = () => {
 			const authGoogleUser = await signInWithPopup(auth, provider);
 			setUserData(authGoogleUser);
 			localStorage.setItem("auth-google-user", JSON.stringify(authGoogleUser.user.refreshToken));
-			navigate("/Onboarding");
+			if (onBoardingDone === "") {
+				navigate("/Onboarding");
+				localStorage.setItem("onBoardingDone", "done");
+			} else {
+				navigate("/Home");
+			}
+
 			uploadUserData(authGoogleUser);
 			console.log(authGoogleUser);
 		} catch (error) {

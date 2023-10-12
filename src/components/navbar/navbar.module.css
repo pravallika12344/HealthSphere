@@ -2,8 +2,7 @@
 	height: 100px;
 	width: 100%;
 	background-color: white;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -25,15 +24,32 @@
 }
 
 .profileBox {
-	width: 120px;
+	width: 400px;
 	height: 100%;
 	display: flex;
 	margin-right: 20px;
 }
-
+.abhaCont {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-right: 30px;
+}
+.abhaBtn {
+	height: 40px;
+	background: rgb(147, 231, 97);
+	background: linear-gradient(90deg, rgba(147, 231, 97, 1) 0%, rgba(109, 237, 141, 1) 70%);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 15px;
+	padding: 0px 10px;
+	cursor: pointer;
+}
 .photo {
 	height: 100%;
-	width: 70%;
+	width: 20%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -41,7 +57,7 @@
 
 .dropdown {
 	height: 100%;
-	width: 30%;
+	width: 10%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -64,23 +80,17 @@
 	justify-content: center;
 	gap: 10px;
 	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .profileBtn {
 	width: 90%;
 	height: 35px;
 	background: rgb(147, 231, 97);
-	background: linear-gradient(
-		90deg,
-		rgba(147, 231, 97, 1) 0%,
-		rgba(109, 237, 141, 1) 70%
-	);
+	background: linear-gradient(90deg, rgba(147, 231, 97, 1) 0%, rgba(109, 237, 141, 1) 70%);
 	border: none;
 	border-radius: 5px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 	color: white;
 	font-size: 15px;
 	cursor: pointer;
@@ -90,15 +100,10 @@
 	width: 90%;
 	height: 35px;
 	background: rgb(147, 231, 97);
-	background: linear-gradient(
-		90deg,
-		rgba(147, 231, 97, 1) 0%,
-		rgba(109, 237, 141, 1) 70%
-	);
+	background: linear-gradient(90deg, rgba(147, 231, 97, 1) 0%, rgba(109, 237, 141, 1) 70%);
 	border: none;
 	border-radius: 5px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 	color: white;
 	font-size: 15px;
 	cursor: pointer;
