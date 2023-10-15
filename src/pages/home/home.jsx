@@ -1,33 +1,57 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
+
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar";
-import stethoscope from "../../images/stethoscope (1).png"
-import Consult from "../consultation/consult";
 import styles from "./home.module.css";
+import consultationImg from "../../images/consultationImg.jpg";
+
 const Home = () => {
 	const navigate = useNavigate();
 
 	return (
 		<>
-			<Navbar />
-			<section>
-				<div>
-					<h1>Book An Appointment</h1>
-					<p>Welcome to our Health Sphere's Appointment Page, where your journey to personalized care begins
-						with a simple click. We understand the value of your time and well-being,
-						which is why we've designed an intuitive and user-friendly platform for
-						scheduling your consultations. Our appointment page empowers you to take
-						control of your healthcare journey effortlessly.To ensure the most comprehensive care,
-						we invite you to share relevant details about your medical history and specific
-						concerns during the booking process.</p>
-					<button onClick={() => {
-						navigate("/Consult")
-					}}>Consult Now<img className={styles.icon} src={stethoscope} /></button>
+			<Navbar currentPage="home" />
+			<section className={styles.section}>
+				<div className={styles.requestContainer}>
+					<div className={styles.left}>
+						<h1 className={styles.heading}>Request consultation</h1>
+						<p className={styles.info}>
+							Welcome to our Consultation Request section, where you can schedule a consultation with our dedicated team of healthcare specialists. <br />
+							<br /> We understand that your health is of utmost importance, and we're here to provide you with expert guidance and support. <br />
+							<br /> Whether you have questions, need advice, or require a comprehensive assessment, our specialists are ready to assist you. <br /> <br />
+							Simply fill out the form, and we'll get back to you promptly to arrange a convenient time for your consultation. <br />
+							<br /> Your well-being is our priority, and we look forward to helping you on your journey to a healthier, happier you.
+						</p>
+						<div className={styles.btnWrapper}>
+							<button
+								className={styles.reqBtn}
+								onClick={() => navigate("/Consult")}>
+								send consultation Request
+							</button>
+						</div>
+					</div>
+
+					<div className={styles.imgCont}>
+						<img
+							src={consultationImg}
+							alt="consultationImg"
+						/>
+					</div>
 				</div>
-				<div>
-					<h1>Get your ABHA Card</h1>
-				</div>
+
+				{/* <div className={styles.abhaContainer}>
+					<h1 className={styles.heading}>get your ABHA number now</h1>
+					<p className={styles.info}>
+						ABHA - Ayushman Bharat Health Account number is a 14 digit number that will uniquely identify you as a participant in India's digital healthcare ecosystem. <br />
+						<br /> ABHA number will establish a strong and trustable identity for you that will be accepted by healthcare providers and payers across the country. <br />
+						<br /> Your ABHA number is your gateway to comprehensive healthcare coverage, giving you access to a wide range of healthcare services and benefits. We prioritize
+						your health and well-being, and obtaining your ABHA number is the first step towards a healthier future. <br />
+						<br />
+						Get started today and experience the peace of mind that comes with Ayushman Bharat.
+					</p>
+					<div className={styles.btnWrapper}>
+						<button className={styles.abhaBtn}>create ABHA number</button>
+					</div>
+				</div> */}
 			</section>
 		</>
 	);

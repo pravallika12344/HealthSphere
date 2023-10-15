@@ -79,7 +79,7 @@ const Profile = () => {
 		} catch (error) {
 			console.error(error.message);
 		}
-	}, []);
+	}, [userEmail, userDetails]);
 
 	useEffect(() => {
 		const uploadImageToStorage = async () => {
@@ -229,6 +229,7 @@ const Profile = () => {
 												src={editIcon}
 												onClick={handleEditName}
 												className={styles.editFieldIcon}
+												alt="editIcon"
 											/>
 										)}
 									</div>
@@ -254,6 +255,7 @@ const Profile = () => {
 												src={editIcon}
 												onClick={handleEditPhone}
 												className={styles.editFieldIcon}
+												alt="editIcon"
 											/>
 										)}
 									</div>
@@ -279,6 +281,7 @@ const Profile = () => {
 												src={editIcon}
 												onClick={handleEditAge}
 												className={styles.editFieldIcon}
+												alt="editIcon"
 											/>
 										)}
 									</div>
@@ -305,6 +308,7 @@ const Profile = () => {
 												src={editIcon}
 												onClick={handleEditCity}
 												className={styles.editFieldIcon}
+												alt="editIcon"
 											/>
 										)}
 									</div>
@@ -331,6 +335,7 @@ const Profile = () => {
 												src={editIcon}
 												onClick={handleEditState}
 												className={styles.editFieldIcon}
+												alt="editIcon"
 											/>
 										)}
 									</div>

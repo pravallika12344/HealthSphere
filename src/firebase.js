@@ -5,13 +5,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyDsXL4v5A-KBKgzbBlMMrpemdIbCWvqB7g",
-	authDomain: "healthsphere-17c44.firebaseapp.com",
-	projectId: "healthsphere-17c44",
-	storageBucket: "healthsphere-17c44.appspot.com",
-	messagingSenderId: "1098989068627",
-	appId: "1:1098989068627:web:9b9c162cbbc0ad797cc1a6",
-	measurementId: "G-0RRNKE1FL5",
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+	appId: process.env.REACT_APP_FIREBASE_APPID,
+	measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
