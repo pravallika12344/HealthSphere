@@ -8,6 +8,7 @@ import Profile from "./pages/userprofile/profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./context/usercontext";
 import { ToastContainer } from "react-toastify";
+import Consult from "./pages/consultation/consult";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
@@ -46,6 +47,12 @@ const App = () => {
 						<Route
 							path="/Profile"
 							element={<Profile />}></Route>
+						<Route
+							path="/Consult"
+							element={<Consult />}>
+
+
+						</Route>
 					</Routes>
 				</BrowserRouter>
 			</UserContextProvider>

@@ -1,0 +1,72 @@
+/* .appointment {
+    width: 500px;
+}
+
+.consultSection {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+}
+
+.formContainer {
+    width: 50%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 100px;
+
+
+}
+
+select {
+    width: 250px;
+    height: 30px;
+    outline: none;
+    border: 1px solid rgb(69, 153, 156);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 550px;
+    justify-content: space-between;
+}
+
+.container input {
+    width: 250px;
+    height: 30px;
+    outline: none;
+    border: 1px solid rgb(69, 153, 156);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.submit {
+    width: 250px;
+    height: 30px;
+    background: rgb(147, 231, 97);
+    background: linear-gradient(90deg,
+            rgba(147, 231, 97, 1) 0%,
+            rgba(109, 237, 141, 1) 70%);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
